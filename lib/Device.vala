@@ -47,6 +47,8 @@ public class PN.Device : Object {
             case NM.DeviceType.WIFI:
                 icon_name = "network-wireless";
                 break;
+            case NM.DeviceType.MODEM:
+                icon_name = "network-cellular";
             default:
                 break;
         }
@@ -135,6 +137,15 @@ public class PN.Device : Object {
             }
         } catch (FileError e) {
             throw e;
+        }
+    }
+
+    internal virtual void update_title (bool use_type_name) {
+        if (use_type_name) {
+            title = get_type_string ();
+        } else {
+            string desc = target.get_description ();
+            title = desc;
         }
     }
 }

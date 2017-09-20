@@ -102,12 +102,7 @@ public class PN.DeviceManager : Object {
 
         foreach (var device in devices) {
             var type = device.target.get_device_type ();
-            if (type_map[type]) {
-                string desc = device.target.get_description ();
-                device.title = desc;
-            } else {
-                device.title = device.get_type_string ();
-            }
+            device.update_title (!type_map[type]);
         }
     }
 }

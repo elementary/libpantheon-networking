@@ -42,7 +42,7 @@ namespace PN.Enums {
                 str = _("WiMAX Broadband");
                 break;
             case NM.DeviceType.MODEM:
-                str = _("Modem");
+                str = _("Modem Broadband");
                 break;
             case NM.DeviceType.INFINIBAND:
                 str = _("InfiniBand device");
