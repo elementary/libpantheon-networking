@@ -1,7 +1,10 @@
 project ('pantheon-networking', ['vala', 'c'],
         version: '0.1')
 
-add_project_arguments(['--vapidir', join_paths(meson.current_source_dir(), 'vapi')], language: 'vala')
+libnm_dep = meson.get_compiler('vala').find_library('libnm', required: false)
+if not libnm_dep.found()
+    add_project_arguments(['--vapidir', join_paths(meson.current_source_dir(), 'vapi')], language: 'vala')
+endif
 
 deps = [
   dependency('gtk+-3.0'),
