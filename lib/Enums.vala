@@ -129,7 +129,7 @@ namespace PN.Enums {
                 label = _("Waiting for authentication");
                 break;
             case NM.DeviceState.DEACTIVATING:
-                label = _("Disconnecting...");
+                label = _("Disconnecting…");
                 break;
             case NM.DeviceState.FAILED:
                 label = _("Failed to connect");
