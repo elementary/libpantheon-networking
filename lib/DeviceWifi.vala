@@ -18,6 +18,18 @@
  */
 
 public class PN.DeviceWifi : Device {
+    public string? ap_strength_icon_name {
+        owned get {
+            var active = ((NM.DeviceWifi)target).get_active_access_point ();
+            if (active != null) {
+                string strength_name = strength_to_string (active.get_strength ());
+                return "network-wireless-signal-%s-symbolic".printf (strength_name);
+            } else {
+                return null;
+            }
+        }
+    }
+
     public DeviceWifi (NM.DeviceWifi device) {
         Object (target: device);
     }
@@ -59,5 +71,17 @@ public class PN.DeviceWifi : Device {
         });
 
         return list;
+    }
+
+    private static string strength_to_string (uint8 strength) {
+        if (strength < 30) {
+            return "weak";
+        } else if (strength < 55) {
+            return "ok";
+        } else if (strength < 80) {
+            return "good";
+        } else {
+            return "excellent";
+        }
     }
 }
