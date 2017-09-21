@@ -121,7 +121,7 @@ public class PN.Device : Object {
         sent = 0;
         received = 0;
 
-        string iface = target.get_iface ();
+        string iface = target.get_ip_iface ();
         string contents;
         try {
             string tx_bytes_path = Path.build_filename ("/sys/class/net", iface, "statistics/tx_bytes");
